@@ -7,7 +7,8 @@
     <script>
         function getQueryParam(param) {
             const params = new URLSearchParams(window.location.search);
-            return params.get(param);
+            const accessCode = params.get(param);
+            return accessCode ? accessCode.replace(/ /g, '+') : accessCode;
         }
 
         function redirectToExtension() {
