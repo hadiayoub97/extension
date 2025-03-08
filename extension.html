@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Redirect to Extension</title>
+    <script>
+        function getQueryParam(param) {
+            const params = new URLSearchParams(window.location.search);
+            return params.get(param);
+        }
+
+        function redirectToExtension() {
+            console.log("trying");
+            const accessCode = getQueryParam('accessCode') || 'defaultCode';
+            const extensionUrl = `chrome-extension://pnolbfolggmmiegajinifjjmfhofapin/login.html?accessCode=${encodeURIComponent(accessCode)}`;
+            window.location.href = extensionUrl;
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+                redirectToExtension();
+            });
+    </script>
+</head>
+
+<body>
+    <h1>Redirecting...</h1>
+    <p>If you are not redirected automatically, <a href="#" onclick="redirectToExtension()">click here</a>.</p>
+</body>
+
+</html>
