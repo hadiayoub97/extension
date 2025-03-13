@@ -7,14 +7,12 @@
     <script>
         function getQueryParam(param) {
             const params = new URLSearchParams(window.location.search);
-            const accessCode = params.get(param);
-            return accessCode ? accessCode.replace(/ /g, '+') : accessCode;
+            return params.get(param);
         }
 
         function redirectToExtension() {
-            console.log("trying");
             const accessCode = getQueryParam('accessCode') || 'defaultCode';
-            const extensionUrl = `chrome-extension://pnolbfolggmmiegajinifjjmfhofapin/login.html?accessCode=${encodeURIComponent(accessCode)}`;
+            const extensionUrl = `chrome-extension://pnolbfolggmmiegajinifjjmfhofapin/login.html?accessCode=${accessCode}`;
             window.location.href = extensionUrl;
         }
 
